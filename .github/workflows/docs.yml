@@ -25,3 +25,4 @@ jobs:
         BUILD_SCRIPT: npm i pnpm -g && pnpm i && pnpm build
         # 构建结果存储目录
         BUILD_DIR: dist/
+        
