@@ -34,7 +34,7 @@ const show = ref(true)
     </template>
   </div>
   <div class="rounded p-5 flex justify-center">
-    <img v-if="show" @click="show = false" class="max-w-180 h-100 w-full rounded" :src="target.image" />
+    <img v-if="show" @click="show = false" class="max-w-180 max-h-100 w-full rounded" :src="target.image" />
     <button v-else @click="show = true">Show Fingering</button>
   </div>
   <div class="mx-auto grid max-w-250 grid-cols-8 text-size-sm rounded overflow-hidden bg-gray-2">
