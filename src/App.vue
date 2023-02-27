@@ -11,6 +11,7 @@ const groups = [
   ['7', 'xi', 'B'],
 ]
 
+
 const codes: number[] = []
 
 function getRandomNumber(length: number) {
@@ -32,6 +33,14 @@ function reset() {
   group.value = getRandomGroup()
 }
 
+function transform() {
+  for (const iterator of groups) {
+    const name = iterator[2]
+    iterator[2] = iterator[1]
+    iterator[1] = name
+  }
+}
+
 const target = ref(1)
 
 const group = ref(getRandomGroup())
@@ -50,6 +59,7 @@ const show = ref(false)
       <div class="flex justify-center gap-5 pt-10">
         <button class="w-20" @click="show = !show">{{ show ? 'hide' : 'show' }}</button>
         <button class="w-20" @click="reset">next</button>
+        <button class="w-20" @click="transform">transform</button>
       </div>
     </div>
   </div>
