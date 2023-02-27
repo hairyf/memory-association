@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-const groups = [
+const groups = ref([
   ['1', 'do', 'C'],
   ['2', 're', 'D'],
   ['3', 'mi', 'E'],
@@ -9,7 +9,7 @@ const groups = [
   ['5', 'sol', 'G'],
   ['6', 'la', 'A'],
   ['7', 'xi', 'B'],
-]
+])
 
 
 const codes: number[] = []
@@ -19,13 +19,13 @@ function getRandomNumber(length: number) {
 }
 
 function getRandomGroup() {
-  let num = getRandomNumber(groups.length)
-  if (codes.length === groups.length)
+  let num = getRandomNumber(groups.value.length)
+  if (codes.length === groups.value.length)
     codes.length = 0
   while (codes.includes(num))
-    num = getRandomNumber(groups.length)
+    num = getRandomNumber(groups.value.length)
   codes.push(num)
-  return groups[num]
+  return groups.value[num]
 }
 
 function reset() {
@@ -34,7 +34,7 @@ function reset() {
 }
 
 function transform() {
-  for (const iterator of groups) {
+  for (const iterator of groups.value) {
     const name = iterator[2]
     iterator[2] = iterator[1]
     iterator[1] = name
@@ -52,7 +52,7 @@ const show = ref(false)
   <div class="h-screen w-full flex flex-col">
     <div class="text-center pt-5 text-size-xl font-bold">Memory Association</div>
     <div class="flex-1 flex flex-col pt-10">
-      <div class="text-center my-5 py-2 text-size-xl font-bold" :class="[target !== index && !show && 'opacity-0']"
+      <div class="text-center my-5 py-2 text-size-2xl font-bold" :class="[target !== index && !show && 'opacity-0']"
         v-for="(item, index) in group" :key="item">
         {{ item }}
       </div>
