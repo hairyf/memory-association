@@ -5,7 +5,7 @@ import { places, colors } from './config'
 import type { Place } from './config'
 const target = ref<Place>(places[0])
 const gamuts = ref<string[]>(shuffle(target.value.gamut))
-
+  random()
 function toggle(index: number) {
   target.value = places[index]
   show.value = true
@@ -17,7 +17,7 @@ function color(alphabet: string) {
 }
 
 function random() {
-  gamuts.value = shuffle(target.value.gamut)
+  gamuts.value = shuffle(target.value.gamut).filter(v=> !v.includes('#'))
 }
 
 const show = ref(true)
